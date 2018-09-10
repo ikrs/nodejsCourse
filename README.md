@@ -20,10 +20,30 @@ We can find alot of usefull libs on `www.npmjs.com`
 
 
 
-1 - Node Fundamentals
+#1 - Node Fundamentals
 
 Module is available in all of our files
 Exports is object on Module property any everything on this object gets exported
 
 In notes.js we use it to get age property in app.js and later we use it to call function.
+
+
+NPM
+- We use it for installing 3rd party modules ( like composer for php )
+
+npm init - will ask us a few questions about our project and creates package.json
+
+We will install lodash module from `https://www.npmjs.com/package/lodash`
+By giving it a `--save` flag we update contents of package.json
+        
+        npm install lodash --save
+        
+        Updated package.json file
+        
+            "dependencies": {
+                "lodash": "^4.17.10"
+              }
+              
+
+Node_modules contains generated code. Should not be shared, changed or pushed to git.
 

@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ikrs/nodejsCourse/issues"
   },
-  "homepage": "https://github.com/ikrs/nodejsCourse#readme"
+  "homepage": "https://github.com/ikrs/nodejsCourse#readme",
+  "dependencies": {
+    "lodash": "^4.17.10"
+  }
 }

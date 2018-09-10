@@ -1,0 +1,19 @@
+{
+  "name": "nodejs_course",
+  "version": "1.0.0",
+  "description": "Installing node 10 on ubuntu",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ikrs/nodejsCourse.git"
+  },
+  "author": "Ivan Krsnik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ikrs/nodejsCourse/issues"
+  },
+  "homepage": "https://github.com/ikrs/nodejsCourse#readme"
+}

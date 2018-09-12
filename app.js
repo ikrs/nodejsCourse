@@ -59,13 +59,43 @@ console.log('Process', process.argv);
 console.log('Yargs', argv);
 
 if ( command === 'add') {
-    notes.addNote(argv.title, argv.body);
+    let note = notes.addNote(argv.title, argv.body);
+
+    /** Refactor for Reusability */
+    if ( note ) {
+        console.log('Note created.');
+        // console.log('---');
+        // console.log(`Title : ${note.title}`);
+        // console.log(`Body : ${note.body}`);
+        notes.logNote(note);
+    } else {
+        console.log('Note title already in use!');
+    }
 } else if ( command === 'list') {
-    notes.getAll();
+    let allNotes = notes.getAll();
+
+    if (allNotes) {
+        console.log('All notes');
+        allNotes.filter((note) => notes.logNote(note));
+    }
 } else if ( command === 'read') {
-    notes.getNote(argv.title);
+    let note = notes.getNote(argv.title);
+
+    if (note) {
+        console.log('Note to read.');
+        // console.log('---');
+        // console.log(`Title : ${note.title}`);
+        // console.log(`Body : ${note.body}`);
+        notes.logNote(note);
+    } else {
+        console.log('Note not found!')
+    }
+
 } else if ( command === 'remove') {
-    notes.removeNote(argv.title);
+    let noteRemoved = notes.removeNote(argv.title);
+    // Ternary operator
+    let message = noteRemoved ? 'Note was removed!' : 'Note not found!';
+    console.log(message);
 } else {
     console.log('Command not recognized!');
 }

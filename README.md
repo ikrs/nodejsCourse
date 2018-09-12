@@ -81,3 +81,22 @@ Working with JSON
 
 JSON.stringify() = converts object to string
 JSON.parse = converts string to object
+
+
+Debugging Node Applications
+
+Running inspect wont run our application.
+`node inpect debugging.js`
+
+While in debug mode we can use
+
+- `list(11)` to see 11 lines above and 11 lines below
+- `n` - short for next, move on to next statement
+- `c` - continue until our program completes
+- `repl` - access application as it currently stands
+
+We can go few lines inside our code with `n` and then enter `repl`. If we enter our code before we define person.name=Mike and hit "person" inside `repl` we will get current value (Ivan)
+
+We can use `debugger;` inside our code witch creates special line break to get to specific part of your program easy. Now we can hit `c` to get to that part of a program.
+
+We can debug with nodemon also `nodemon inspect app.js read --title=secret`. On each save inspect will rerun.

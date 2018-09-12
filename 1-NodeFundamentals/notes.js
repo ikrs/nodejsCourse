@@ -17,25 +17,42 @@ console.log('Starting notes.js');
 // };
 
 /** Adding and saving Notes - switched console.log for actual logic*/
+/** Refactor for Reusability */
 
 const fs = require('fs');
+
+let fetchNotes = () => {
+    // In case file doesn't exist
+    try {
+        let notesString = fs.readFileSync('1-NodeFundamentals/notes-data.json');
+        return JSON.parse(notesString);
+    } catch (e) {
+        return [];
+    }
+};
+
+let saveNotes = (notes) => {
+    fs.writeFileSync('1-NodeFundamentals/notes-data.json', JSON.stringify(notes));
+};
 
 
 let addNote = (title, body) => {
     //console.log('Adding note', title, body);
-    let notes = [];
+    //let notes = [];
+    let notes = fetchNotes();
     let note = {
         title,
         body
     };
 
+    // Refactored, moved in to fetchNotes
     // In case file doesn't exist
-    try {
-        let notesString = fs.readFileSync('1-NodeFundamentals/notes-data.json');
-        notes = JSON.parse(notesString);
-    } catch (e) {
-
-    }
+    // try {
+    //     let notesString = fs.readFileSync('1-NodeFundamentals/notes-data.json');
+    //     notes = JSON.parse(notesString);
+    // } catch (e) {
+    //
+    // }
 
     // filter is an array method that takes callback
     // it gets called once for every item in array (foreach)
@@ -50,21 +67,48 @@ let addNote = (title, body) => {
     if (duplicatedNotes.length === 0) {
         // Push item to the end of the array
         notes.push(note);
-        fs.writeFileSync('1-NodeFundamentals/notes-data.json', JSON.stringify(notes));
+        // Refactored, moved to saveNotes
+        //fs.writeFileSync('1-NodeFundamentals/notes-data.json', JSON.stringify(notes));
+        saveNotes(notes);
+
+        return note;
     }
 };
 
 let getAll = () => {
-    console.log('Getting all notes');
+    //console.log('Getting all notes');
+    let notes = fetchNotes();
+    return notes;
 };
-
+/** Reading note and reusability */
 let getNote = (title) => {
-    console.log('Getting note with title ' ,title);
+    //console.log('Getting note with title ' ,title);
+    let notes = fetchNotes();
+    let readNote = notes.filter((note) => note.title === title);
+    // filter always returns an array
+    return readNote[0];
+};
+/** Removing note*/
+let removeNote = (title) => {
+    //console.log('Removing note with title ', title);
+    let notes = fetchNotes();
+    // If the title matches given title then we wont add it to filteredNotes array
+    let filteredNotes = notes.filter((note) => note.title !== title );
+    //Saving new notes
+    saveNotes(filteredNotes);
+
+    // it will return true if they are not equal
+    return notes.length !== filteredNotes.length;
 };
 
-let removeNote = (title) => {
-    console.log('Removing note with title ', title);
-};
+let logNote = (note) => {
+    /** Debugging Note Application*/
+    debugger;
+    console.log('---');
+    console.log(`Title : ${note.title}`);
+    console.log(`Body : ${note.body}`);
+}
+
 
 // We set object to exports
 module.exports = {
@@ -73,5 +117,6 @@ module.exports = {
     addNote,
     getAll,
     getNote,
-    removeNote
+    removeNote,
+    logNote
 };

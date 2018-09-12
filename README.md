@@ -1,6 +1,3 @@
-var/www/html - drwxrwxr-x  7 www-data www-data 4096 ruj  10 15:10 html
-
-
 Installing node 10 on ubuntu
 
         curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -

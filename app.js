@@ -6,6 +6,10 @@ const fs = require('fs');
 const os = require('os');
 // getting lodash
 const _ = require('lodash');
+// getting Yargs
+const yargs = require('yargs');
+
+
 // getting our own files by relative path
 const notes = require('./1-NodeFundamentals/notes.js');
 
@@ -35,6 +39,34 @@ const notes = require('./1-NodeFundamentals/notes.js');
 // console.log(_.isString('Ivan')); //true
 
 // uniq will remove all duplicates from array
-let filteredArray = _.uniq(['Ivan',1 , 'Ivan', 1, 2, 3, 4]);
+//let filteredArray = _.uniq(['Ivan',1 , 'Ivan', 1, 2, 3, 4]);
+// Testing Nodemon
+//let filteredArray = _.uniq(['Ivan']);
 
-console.log(filteredArray); // [ 'Ivan', 1, 2, 3, 4 ]
+//console.log(filteredArray); // [ 'Ivan', 1, 2, 3, 4 ]
+
+
+/** Getting User Input */
+/** Simplified Input with Yargs */
+/** Working with JSON */
+
+const argv = yargs.argv;
+//console.log(process.argv);
+//let command = process.argv[2];
+let command = argv._[0];
+console.log('Command' , command);
+console.log('Process', process.argv);
+console.log('Yargs', argv);
+
+if ( command === 'add') {
+    notes.addNote(argv.title, argv.body);
+} else if ( command === 'list') {
+    notes.getAll();
+} else if ( command === 'read') {
+    notes.getNote(argv.title);
+} else if ( command === 'remove') {
+    notes.removeNote(argv.title);
+} else {
+    console.log('Command not recognized!');
+}
+

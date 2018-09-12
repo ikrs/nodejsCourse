@@ -1,3 +1,6 @@
+var/www/html - drwxrwxr-x  7 www-data www-data 4096 ruj  10 15:10 html
+
+
 Installing node 10 on ubuntu
 
         curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
@@ -47,3 +50,34 @@ By giving it a `--save` flag we update contents of package.json
 
 Node_modules contains generated code. Should not be shared, changed or pushed to git.
 
+
+NODEMON - `https://www.npmjs.com/package/nodemon`
+- it automatically restarts our application when we make changes
+- it is CLI utility, new way of starting our applications
+
+-g = global
+
+        npm install nodemon -g
+        
+Now we start application with `nodemon app.js` command and it will automatically restart our application when we save changes
+Shut down nodemon with `Ctrl + c`
+
+
+Getting User Input
+
+`process.argv` - get all arguments passed in terminal command, ex. `node app.js -v` we will get `-v`
+
+
+Simplified Input using Yargs
+
+yargs - https://www.npmjs.com/package/yargs
+- helps us build interactive CLI tools by parsing arguments and generating an elegant user interface
+- to make sure we have same version as in course we add version number during installation
+
+        npm install yargs@4.7.1
+        
+        
+Working with JSON
+
+JSON.stringify() = converts object to string
+JSON.parse = converts string to object

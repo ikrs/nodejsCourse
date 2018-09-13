@@ -1,4 +1,6 @@
-console.log('Starting app.js');
+/** Move app.js to root to test it, or remove all instances of 1-NodeFundamentals/ */
+
+//console.log('Starting app.js');
 
 // getting FileSystem - builtin
 const fs = require('fs');
@@ -50,13 +52,42 @@ const notes = require('./1-NodeFundamentals/notes.js');
 /** Simplified Input with Yargs */
 /** Working with JSON */
 
-const argv = yargs.argv;
+/** Before - Requiring Args and Advanced Yargs*/
+//const argv = yargs.argv;
+
+/** Requiring Arguments and Advanced Yargs*/
+const titleOptions = {
+    describe: 'Title of note',
+    demand: true, // required
+    alias: 't' // can use -t instead of --title
+};
+const bodyOptions = {
+    describe: 'Content of the note',
+    demand: true,
+    alias: 'b'
+};
+
+const argv = yargs
+    .command('add', 'Add a new note', {
+        title: titleOptions,
+        body: bodyOptions
+    })
+    .command('list', 'List all notes')
+    .command('read', 'Read a note', {
+        title: titleOptions
+    })
+    .command('remove', 'Remove a note', {
+        title: titleOptions
+    })
+    .help() // we can now run -- help on app.js or specific command
+    .argv;
+
 //console.log(process.argv);
 //let command = process.argv[2];
 let command = argv._[0];
-console.log('Command' , command);
-console.log('Process', process.argv);
-console.log('Yargs', argv);
+// console.log('Command' , command);
+// console.log('Process', process.argv);
+// console.log('Yargs', argv);
 
 if ( command === 'add') {
     let note = notes.addNote(argv.title, argv.body);
@@ -74,10 +105,9 @@ if ( command === 'add') {
 } else if ( command === 'list') {
     let allNotes = notes.getAll();
 
-    if (allNotes) {
-        console.log('All notes');
-        allNotes.filter((note) => notes.logNote(note));
-    }
+    /** Listing Notes */
+    console.log(`Printing ${allNotes.length} notes(s).`);
+    allNotes.forEach((note) => notes.logNote(note));
 } else if ( command === 'read') {
     let note = notes.getNote(argv.title);
 

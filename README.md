@@ -97,3 +97,33 @@ We can go few lines inside our code with `n` and then enter `repl`. If we enter 
 We can use `debugger;` inside our code witch creates special line break to get to specific part of your program easy. Now we can hit `c` to get to that part of a program.
 
 We can debug with nodemon also `nodemon inspect app.js read --title=secret`. On each save inspect will rerun.
+
+
+
+Debugging vie Chrome Dev Tools
+
+Type `node --inspeck-brk app.js` then in your browser go to chrome://inspect -> Open dedicated DevTools for Node
+
+Sources tab is most usefull.
+Options -> Show console drawer to show console tab inside sources tab.
+
+We can also use nodemon - `nodemon --inspect-brk app.js`
+
+
+Listing Notes
+
+`allNotes.forEach()` is similar to `.filter`.
+`.filter()` lets you manipulate array by returning true or false to keep items or remove items.
+`.forEach()` calls callback function once for each item in array
+
+
+Requiring Arguments and Advanced Yargs
+
+We added --help command, description to each command and required fields.
+Check app.js for more info.
+
+
+Arrow functions
+
+
+Arrow functions DONT BIND `.this` keyword.

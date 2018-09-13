@@ -1,4 +1,4 @@
-console.log('Starting notes.js');
+// console.log('Starting notes.js');
 
 // Module is availabel in all of our files
 // Exports is object on Module property any everything on this object gets exported
@@ -77,8 +77,7 @@ let addNote = (title, body) => {
 
 let getAll = () => {
     //console.log('Getting all notes');
-    let notes = fetchNotes();
-    return notes;
+    return fetchNotes();
 };
 /** Reading note and reusability */
 let getNote = (title) => {
@@ -107,7 +106,7 @@ let logNote = (note) => {
     console.log('---');
     console.log(`Title : ${note.title}`);
     console.log(`Body : ${note.body}`);
-}
+};
 
 
 // We set object to exports

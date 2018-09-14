@@ -126,7 +126,7 @@ Check app.js for more info.
 Arrow functions
 
 
-Arrow functions DONT BIND `.this` keyword.
+Arrow functions DOES NOT BIND `.this` keyword.
 
 
 
@@ -134,3 +134,35 @@ Arrow functions DONT BIND `.this` keyword.
 
 
 Async Basics
+
+`setTimeout()` is a great method for illustrating basics of non-blocking programming
+
+
+Callback functions & APIs
+
+Callback function is function that gets passed as an argument to another function and it gets executed after some event
+
+        Here we are sending function console.log() to function setTimeout() that 
+        will execute after 2000 ms witch represents event
+        
+        setTimeout(() => {
+            console.log('callback') 
+        }, 2000)
+        
+        
+Request : `https://www.npmjs.com/package/request`
+
+Due to changes to Google Maps api I use different url then in course.
+
+`http://www.mapquestapi.com/geocoding/v1/address?key=5FaLATH8xpsKmyy7uMLg9lTGUFXpQcoL&location=65%20srebrnjak%20zagreb`
+
+
+Pretty Printing Objects
+
+Print whole object with `console.log(JSON.stringify(body, undefined, 2));`
+
+
+Encoding User Input
+
+`encodeURIComponent()` changes spaces for %20 
+`decodeURIComponent()` changes %20 to spaces

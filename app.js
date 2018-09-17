@@ -1,5 +1,7 @@
-const request = require('request');
 const yargs = require('yargs');
+
+const geocode = require('./2-AsynchronousNodeWeatherApp/geocode');
+const weather = require('./2-AsynchronousNodeWeatherApp/weather');
 
 // User will enter command over CLI
 const argv = yargs.options({
@@ -14,19 +16,21 @@ const argv = yargs.options({
     .alias('help','h')
     .argv;
 
-let encodedAddress = encodeURIComponent(argv.address);
 
-// First argument is options object
-// Second argument is callback function, this will get called when data comes back from api
-request({
-    url: `http://www.mapquestapi.com/geocoding/v1/address?key=5FaLATH8xpsKmyy7uMLg9lTGUFXpQcoL&location=${encodedAddress}`,
-    json: true //convert to object
-}, (error,response,body) => {
-    //console.log(JSON.stringify(body, undefined, 2));
-    //console.log(JSON.stringify(response, undefined, 2));
-    //console.log(JSON.stringify(error, undefined, 2));
-
-    console.log(`Address : ${body.results[0].providedLocation.location}`);
-    console.log(`Lat : ${body.results[0].locations[0].latLng.lat}`);
-    console.log(`Lng : ${body.results[0].locations[0].latLng.lng}`);
+geocode.geocodeAddress(argv.address, (errorMessage, results) => {
+    if (errorMessage){
+        console.log(errorMessage);
+    } else {
+        //console.log(JSON.stringify(results, undefined, 2));
+        console.log(results.address);
+        /** Chaining Callbacks Together */
+        weather.getWeather(results.latitude, results.longitude, (errorMessage , weatherResults) =>{
+            if (errorMessage) {
+                console.log(errorMessage);
+            } else {
+                //console.log(JSON.stringify(weatherResults, undefined, 2));
+                console.log(`It's currently ${weatherResults.temperature}. It feels like ${weatherResults.apparentTemperature}.`);
+            }
+        });
+    }
 });

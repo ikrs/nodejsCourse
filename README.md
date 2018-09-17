@@ -166,3 +166,26 @@ Encoding User Input
 
 `encodeURIComponent()` changes spaces for %20 
 `decodeURIComponent()` changes %20 to spaces
+
+
+Intro to ES6 Promises
+
+Promises solve alot of problems that come up when you have a lot of async code.
+
+Promise takes function as a argument. In order to actually do something when Promise 
+gets resolved or rejected we need to call Promise method called "then".
+
+Difference from callback and Promise is that in callback we have one function that fires 
+no matter what and the arguments let us know if things went well.
+In Promises we are going to have 2 functions and that is going to determine if things 
+went wrong or not.
+
+
+First function will get called only if our promise gets resolved, otherwise second 
+function will get called that will handle rejection
+
+        somePromise.then((message) => {
+            console.log(`Success : ${message}`);
+        }, (errorMessage) => {
+            console.log(`Error : ${errorMessage}`);
+        });

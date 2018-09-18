@@ -189,3 +189,5 @@ function will get called that will handle rejection
         }, (errorMessage) => {
             console.log(`Error : ${errorMessage}`);
         });
+
+`.catch` method is similar to `.then`, but it takes just one function and that is an error handler. It is very usefull when chaining Promises.

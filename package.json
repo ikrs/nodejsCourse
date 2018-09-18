@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ikrs/nodejsCourse#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "lodash": "^4.17.10",
     "request": "^2.88.0",
     "yargs": "^4.7.1"

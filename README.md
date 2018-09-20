@@ -207,6 +207,9 @@ We start the server with `nodemon server.js` and we can visit localhost:3000 to 
 Rendering Template with Data
 
 `http://handlebarsjs.com/` - allows us to build templates 
-`https://www.npmjs.com/package/hbs`
+
+`https://www.npmjs.com/package/hbs` - npm page for handlebars module
+
+
 
 

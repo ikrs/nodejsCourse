@@ -190,4 +190,23 @@ function will get called that will handle rejection
             console.log(`Error : ${errorMessage}`);
         });
 
-`.catch` method is similar to `.then`, but it takes just one function and that is an error handler. It is very usefull when chaining Promises.
+`.catch` method is similar to `.then`, but it takes just one function and that is an error handler. It is 
+very usefull when chaining Promises.
+
+
+
+# Web Servers and Application Deployment
+
+Hello Express
+
+`expressjs.com` - site dedicated to express module for Node
+
+We start the server with `nodemon server.js` and we can visit localhost:3000 to see if it works.
+
+
+Rendering Template with Data
+
+`http://handlebarsjs.com/` - allows us to build templates 
+`https://www.npmjs.com/package/hbs`
+
+

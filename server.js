@@ -3,6 +3,9 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+// Heroku changes
+const port = process.env.PORT || 3000;
+
 // Make a new express app
 let app = express();
 
@@ -31,9 +34,9 @@ app.use((request, response, next) => {
 });
 
 // Redirects us to maintenance mode because we dont use next()
-app.use((request, response, next) => {
-    response.render('maintenance.hbs');
-});
+// app.use((request, response, next) => {
+//     response.render('maintenance.hbs');
+// });
 
 // When we call getCurrentYear in html it will return this
 hbs.registerHelper('getCurrentYear', () => new Date().getFullYear());
@@ -79,8 +82,8 @@ app.get('/bad', (request, response) => {
 
 // Binds application to a port on our machine, REQUIRED
 // Second argument is a function and its OPTIONAL
-app.listen(3000, () => {
-    console.log('Server is up on port 3000!')
+app.listen(port, () => {
+    console.log(`Server is up on port ${port}!`)
 });
 
 

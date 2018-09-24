@@ -212,4 +212,24 @@ Rendering Template with Data
 
 
 
+Setting Up GitHub & SSH Keys
+
+`https://help.github.com/categories/authenticating-to-github/` - Everything related to GitHub SSH Keys
+
+
+
+Deploy Your Apps
+
+Deploying on Heroku, we need to download Heroku CLI tool at `toolbelt.heroku.com`.
+
+ - Login to Heroku over CLI : `heroku login`
+ 
+ - `heroku keys:add` adds first key it finds in SSH folder
+ 
+ - `ssh -v get@heroku.com` testing if everything works
+
+
+
+
+
 

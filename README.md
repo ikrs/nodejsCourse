@@ -239,8 +239,74 @@ Deploying on Heroku, we need to download Heroku CLI tool at `toolbelt.heroku.com
  # Testing Your Application
  
  
+ Mocha and Basic Testing
+ 
+ `https://mochajs.org/`
+ 
+ Save dev will save this package for development use only, we dont need it on 
+ Heroku we just need it locally
+ `npm i mocha --save-dev`
+ 
+ In package.json under "test" we use `"test": "mocha **/*.test.js"`, it tells mocha to 
+ look in every folder for a file ending in test.js.
+ 
+ 
+ `it()` is a function provided by mocha and we use it for testing
+ 
+        it('should add two numbers', () => {
+            let result = utils.add(33,11);
+        
+            if (result !== 44) {
+                throw new Error(`Expected 44, but got ${result}`);
+            }
+        });
+        
+        
+
+Watch and Auto Restart Tests
 
 
+`nodemon --exec 'npm test'` - exec tels nodemon that given command might not be node command
+ We can also move that command to package.json like this `"test_watch": "nodemon --exec 'npm test'"` and 
+ now we can use `npm run test-watch`
+ 
+ 
+ 
+ Using an Assertion Library
+ 
+ 
+ `https://github.com/mjackson/expect` - Assertion library
+ `npm i expect@1.20.2 --save-dev`
+ 
+ 
+ 
+ Testing Asynchronous Code
+ 
+ 
+When we put done as a argument then mocha knows we have async code.We also have 
+to call done() after assertions.
+
+
+
+Testing Express Application
+
+We will use `supertest` library along side mocha to test `express`
+
+`https://www.npmjs.com/package/supertest`
+
+`npm i supertest --save-dev`
+
+
+
+Organizing Tests with describe()
+
+`describe()` alows us to group and sort our tests
+
+We define it and just move all of the tests inside describe function
+
+
+
+Test Spies
 
 
 

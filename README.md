@@ -230,7 +230,7 @@ Deploying on Heroku, we need to download Heroku CLI tool at `toolbelt.heroku.com
  
  - `heroku create`
  
- - `git push heroku`
+ - `git push heroku` - push & build on heroku
  
  - `heroku open` - go to url
 

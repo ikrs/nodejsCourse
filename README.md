@@ -227,6 +227,12 @@ Deploying on Heroku, we need to download Heroku CLI tool at `toolbelt.heroku.com
  - `heroku keys:add` adds first key it finds in SSH folder
  
  - `ssh -v get@heroku.com` testing if everything works
+ 
+ - `heroku create`
+ 
+ - `git push heroku`
+ 
+ - `heroku open` - go to url
 
 
 

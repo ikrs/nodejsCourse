@@ -17,7 +17,7 @@ app.set('view_engine', 'hbs');
 
 
 // Define folder with .html files
-// localhost:3000/help.html now works without needing app.get
+// localhost:3000/help.html now works without needing app.get since it is a static page
 //app.use(express.static(__dirname + '/3-WebServersAndApplicationDeployment/public'));
 app.use(express.static(__dirname + '/public'));
 
@@ -80,12 +80,15 @@ app.get('/bad', (request, response) => {
     });
 });
 
+/** Adding a New Feature and Deploying*/
+app.get('/projects', (request, response) => {
+    response.render('projects.hbs', {
+        pageTitle: 'Projects'
+    });
+});
+
 // Binds application to a port on our machine, REQUIRED
 // Second argument is a function and its OPTIONAL
 app.listen(port, () => {
     console.log(`Server is up on port ${port}!`)
 });
-
-
-//
-

@@ -308,6 +308,30 @@ We define it and just move all of the tests inside describe function
 
 Test Spies
 
+Spies let us swap out real functions for a testing utility. Spies come build with expect library
+and we create a spy with `expect.createSpy()`, that method will return a function witch we will 
+swap out with real method.
+
+For example, we need to test a call to `saveUser` but we dont want to save test user to database, 
+so we use spy to see if function was called with correct arguments.
+
+
+Rewire lets us swap out variables for our tests.
+`npm i rewire --save-dev`
+Rewire works in a way that we use `rewire` instead of `require` when we are loading a file 
+that we want to mock up.
+Rewire also adds 2 methods, `.__set__` and `__get__`.
+
+        let db = {
+                saveUser: expect.createSpy()
+            };
+        app.__set__('db',db);
+        
+  
+Here we replace db with spy and we tell that when testing app.js we want to swap 
+real `'db'` with spy `db`
+
+
 
 
 

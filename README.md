@@ -380,7 +380,87 @@ Now we can see our Todos table in test/Collections
 
 Build a NoSQL Vocabulary
 
+SQL                     NoSQL
+Table           =       Collection
+Row/Record      =       Document
+Column          =       Does not have Columns because of JSON format
 
+
+
+Connecting to Mongo and Writing Data
+
+Node MongoDB Native - `https://github.com/mongodb/node-mongodb-native`
+`npm i mongodb --save`
+
+To connect to any give database we use
+
+        const MongoClient = require('mongodb').MongoClient;
+        
+        // Connecting to mongodb
+        // TodoApp will automatically be created WHEN we start adding data into it
+        MongoClient.connect('mongodb://localhost:27017/TodoApp', { useNewUrlParser: true }, (error, client) => {
+        
+            if (error) {
+                return console.log('Unable to connect to MongoDB Server');
+            }
+        
+            console.log('Connected to MongoDB Server');
+        
+            // Close the connection to MongoDB Server
+            client.close();
+        });
+        
+Save data in collection
+
+        // .collection - Argument is string name of a collection we want to insert in to
+        // .insertOne - object to save in MongoDB, callback function
+        db.collection('Todos').insertOne({
+                text: 'Something to do',
+                completed: false
+        }, (error, result) => {
+            if (error) {
+                return console.log('Unable to insert Todo : ', error);
+            }
+            // result.ops contains all the documents that were inserted
+            console.log(JSON.stringify(result.ops, undefined, 2));
+        });    
+        
+ 
+ 
+The ObjectId    
+
+ 
+MongoDB id is NOT autoincrement id, but is randomly generated.
+It is a 12 byte value : 
+    
+    First 4 bytes : timestamp (so we dont need createdAt field)
+    Next 3 bytes : machine identifyer
+    Next 2 bytes : process id
+    Next 3 byte : counter
+ 
+Printing id info : 
+
+    console.log(result.ops[0]._id);
+    console.log(result.ops[0]._id.getTimestamp());
+    
+
+Object descructuring - lets us pull out the properties from an object creating 
+variables, in this case we grab name from user object
+
+    let user = {name:'Ivan',age:32};
+    let {name} = user;   
+    
+Using Object descructoring on mongodb object
+
+    const {MongoClient, ObjectID} = require('mongodb');
+    
+    // Creating new ObjectId
+    let obj = new ObjectID();
+    
+    
+
+Fetching Data 
+    
 
 
 

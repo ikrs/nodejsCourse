@@ -333,5 +333,54 @@ real `'db'` with spy `db`
 
 
 
+# MongoDB, Mongoose and REST APIs
+
+`mongodb.com` - select community server
+
+After download rename it to mongodb and put it in Documents folder, also 
+in Documents create another folder mongo-data/nodeCourse folder.
+
+
+Go to mongodb/bin and run `./mongod --dbpath ~Documents/mongo-data/nodeCourse`
+This command will start database server and we need to define path to database 
+file location.
+
+Open new terminal tab and from mongodb/bin run `./mongo`, this will connect 
+us to database server we just started. 
+
+To test that database is working we will create new table
+
+        > db.Todos.insert({text:'Film new node course'})
+        WriteResult({ "nInserted" : 1 }) // 1 new record was created
+        
+        db.Todos.find() // find every single item in Todos collection
+        { "_id" : ObjectId("5bab4b8b7afd2c6b893940ec"), "text" : "Film new node course" }
+        
+      
+Now we can shut down `./mongo` tab since everything is working fine. 
+
+`robomango.org` - GUI for managing mongo database
+
+Download robomongo (Robo 3T) and move to Documents folder.
+Go inside robo3t/bin and run/double click `robo3t` icon.
+
+We need to create a connection for a local mongodb database so that we can connect 
+to ir and manipulate data.
+    
+        Connection Settings
+        
+        Type: Direct Connection
+        Name: Node Course
+        Address: localhost : 27017
+        Save
+        
+Now we can see our Todos table in test/Collections
+
+
+
+Build a NoSQL Vocabulary
+
+
+
 
 

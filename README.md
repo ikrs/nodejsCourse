@@ -336,6 +336,7 @@ real `'db'` with spy `db`
 # MongoDB, Mongoose and REST APIs
 
 `mongodb.com` - select community server
+`http://mongodb.github.io/node-mongodb-native/3.1/api/index.html` - mongodb methods
 
 After download rename it to mongodb and put it in Documents folder, also 
 in Documents create another folder mongo-data/nodeCourse folder.
@@ -484,3 +485,36 @@ Counting documents `db.collection('Todos').find().count().then((count) => {.....
 
 Deleting Documents
 
+Most used methods are
+
+- deleteMany()
+
+- deleteOne()
+
+- findOneAndDelete()
+
+
+
+Updating Data
+
+Most used method is `.findOneAndUpdate(filter, update, options, callback)`.
+
+MongoDB Update Operators - `https://docs.mongodb.com/manual/reference/operator/update/`
+
+Example : 
+
+    db.collection('Users').findOneAndUpdate({
+            _id: new ObjectID('5bab8b421e9ff352916bb2fb')
+        }, {
+            $set: {
+                name: 'Ivan'
+            },
+            // increment age by 1
+            $inc: {
+                age: 1
+            }
+        }, {
+            returnOriginal: false
+        }).then((result) => {
+            console.log(result);
+        });

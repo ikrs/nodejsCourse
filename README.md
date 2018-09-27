@@ -480,3 +480,7 @@ We use .find() for fetching data
     
 Counting documents `db.collection('Todos').find().count().then((count) => {.....})` 
 
+
+
+Deleting Documents
+

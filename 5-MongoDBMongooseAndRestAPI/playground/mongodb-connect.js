@@ -14,7 +14,7 @@ const {MongoClient, ObjectID} = require('mongodb');
 // console.log(obj);
 
 // Connecting to mongodb
-// TodoApp will automatically be created
+// TodoApp will automatically be created if it does not exist
 MongoClient.connect('mongodb://localhost:27017/TodoApp', { useNewUrlParser: true }, (error, client) => {
 
     if (error) {

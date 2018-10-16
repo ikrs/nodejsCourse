@@ -342,7 +342,8 @@ After download rename it to mongodb and put it in Documents folder, also
 in Documents create another folder mongo-data/nodeCourse folder.
 
 
-Go to mongodb/bin and run `./mongod --dbpath ~Documents/mongo-data/nodeCourse`
+Go to mongodb/bin and run `./mongod --dbpath ~Documents/mongo-data/nodeCourse`, i used path `../../mongo-data/nodeCourse`
+because I could not set it any other way
 This command will start database server and we need to define path to database 
 file location.
 

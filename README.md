@@ -342,7 +342,7 @@ After download rename it to mongodb and put it in Documents folder, also
 in Documents create another folder mongo-data/nodeCourse folder.
 
 
-Go to mongodb/bin and run `./mongod --dbpath ~Documents/mongo-data/nodeCourse`, i used path `../../mongo-data/nodeCourse`
+Go to mongodb/bin and run `./mongod --dbpath ~Documents/mongo-data/nodeCourse`, i used path `/home/ikrsnik/Documents/mongo-data/nodeCourse`
 because I could not set it any other way
 This command will start database server and we need to define path to database 
 file location.
@@ -519,3 +519,67 @@ Example :
         }).then((result) => {
             console.log(result);
         });
+        
+        
+Setting Up Mongoose
+
+`https://mongoosejs.com`
+
+`npm i mongoose@4.5.9 --save`
+        
+        - We tell mongoose we want to use built in Promise library instead of some 3rd party one
+        mongoose.Promise = global.Promise;
+        
+        -Connect to database
+        mongoose.connect('mongodb://localhost:27017/TodoApp',{ useNewUrlParser: true });
+
+         Responsible for saving
+        .save returns a promise
+        
+        newTodo.save().then((doc) => {
+            console.log('Saved Todo ', doc);
+        }, (e) => {
+            console.log('Unable to save Todo');
+        });
+        
+        
+        
+Validators, Types and Defaults
+
+`https://mongoosejs.com/docs/validation.html`
+`https://mongoosejs.com/docs/guide.html`
+
+    let User = mongoose.model('User', {
+        email: {
+            type: String,
+            // VALIDATION BELOW
+            required: true,
+            trim: true,
+            minlength: 1
+        }
+    });
+
+
+Installing Postman
+
+- Postman is essential tool when we are building API.
+`https://www.getpostman.com/`
+Me : Looks like better version of Insomnia
+
+
+Resource Creating Endpoint - POST /todos
+
+`npm i body-parser@1.15.2 --save` - BodyParses is letting us send JSON to server
+
+- Run `server.js`
+- Go to Postman, set method to POST, url `localhost:3000/todos`, Body -> raw ->JSON
+    
+    
+    In Postman text area write
+    {
+    	text:"This is from postman"
+    }
+
+Hit send and in console you should see message `{ text: 'This is from postman' }
+`
+    

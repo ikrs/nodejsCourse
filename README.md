@@ -595,3 +595,15 @@ test wiping all todos from database.
     beforeEach((done) => {
         Todo.remove({}).then(() => done());
     });
+    
+    
+
+
+List Resources - GET /todos
+
+Postman Info :
+- Put in method and url
+- Save downarrow -> Save As 
+- Create Collection (ex TodoApp)
+- Select created collection and Save
+- In the left menu, under Collections, we have saved methods/urls

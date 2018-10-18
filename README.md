@@ -583,3 +583,15 @@ Resource Creating Endpoint - POST /todos
 Hit send and in console you should see message `{ text: 'This is from postman' }
 `
     
+    
+Testing POST /todos
+
+Creating tests/server.test.js.
+
+We will use testing lifecycle method that will run in between each 
+test wiping all todos from database.
+
+
+    beforeEach((done) => {
+        Todo.remove({}).then(() => done());
+    });

@@ -4,7 +4,7 @@
   "description": "Installing node 10 on ubuntu",
   "main": "app.js",
   "scripts": {
-    "test": "mocha 4-TestingYourApplication/**/*.test.js",
+    "test": "mocha 5-MongoDBMongooseAndRestAPI/server/**/*.test.js",
     "test-watch": "nodemon --exec 'npm test'",
     "start": "node server.js"
   },

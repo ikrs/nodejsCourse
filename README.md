@@ -607,3 +607,8 @@ Postman Info :
 - Create Collection (ex TodoApp)
 - Select created collection and Save
 - In the left menu, under Collections, we have saved methods/urls
+
+
+
+Testing GET /todos
+
